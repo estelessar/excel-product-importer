@@ -1,0 +1,1030 @@
+/**
+ * Excel Product Importer - Admin Styles
+ * Light Theme - ADN Bilişim Teknolojileri
+ * IMPORTANT: Only target .epi-wrapper elements to avoid affecting WP admin menu
+ */
+
+/* ============================================
+   FORCE LIGHT BACKGROUND - Only on content area
+   ============================================ */
+body.toplevel_page_excel-product-importer #wpcontent,
+body.toplevel_page_excel-product-importer #wpbody,
+body.toplevel_page_excel-product-importer #wpbody-content {
+    background: #f0f0f1 !important;
+}
+
+/* ============================================
+   MAIN WRAPPER
+   ============================================ */
+.epi-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #1d2327;
+    background: #f0f0f1;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.epi-wrapper * { box-sizing: border-box; }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.epi-wrapper .epi-header {
+    background: #fff;
+    border-bottom: 1px solid #c3c4c7;
+    padding: 16px 24px;
+}
+
+.epi-wrapper .epi-header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.epi-wrapper .epi-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.epi-wrapper .epi-logo-text h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-logo-text span {
+    font-size: 12px;
+    color: #646970;
+}
+
+
+/* ============================================
+   TABS
+   ============================================ */
+.epi-wrapper .epi-tabs {
+    display: flex;
+    gap: 0;
+    padding: 0 24px;
+    background: #fff;
+    border-bottom: 1px solid #c3c4c7;
+    overflow-x: auto;
+}
+
+.epi-wrapper .epi-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #50575e;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.epi-wrapper .epi-tab:hover {
+    color: #135e96;
+    background: #f6f7f7;
+}
+
+.epi-wrapper .epi-tab.active {
+    color: #135e96;
+    border-bottom-color: #135e96;
+}
+
+.epi-wrapper .epi-tab svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.epi-wrapper .epi-main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 24px;
+}
+
+/* ============================================
+   STEPS
+   ============================================ */
+.epi-wrapper .epi-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    margin-bottom: 16px;
+}
+
+.epi-wrapper .epi-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.5;
+}
+
+.epi-wrapper .epi-step.active,
+.epi-wrapper .epi-step.completed { opacity: 1; }
+
+.epi-wrapper .epi-step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #dcdcde;
+    color: #50575e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.epi-wrapper .epi-step.active .epi-step-number {
+    background: #135e96;
+    color: #fff;
+}
+
+.epi-wrapper .epi-step.completed .epi-step-number {
+    background: #00a32a;
+    color: #fff;
+}
+
+.epi-wrapper .epi-step-label {
+    font-size: 11px;
+    color: #50575e;
+}
+
+.epi-wrapper .epi-step.active .epi-step-label {
+    color: #1d2327;
+    font-weight: 500;
+}
+
+.epi-wrapper .epi-step-line {
+    width: 50px;
+    height: 2px;
+    background: #dcdcde;
+    margin: 0 10px 20px;
+}
+
+
+/* ============================================
+   CARDS
+   ============================================ */
+.epi-wrapper .epi-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.epi-wrapper .epi-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.epi-wrapper .epi-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-card-desc {
+    font-size: 13px;
+    color: #646970;
+    margin: 6px 0 16px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.epi-wrapper .epi-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.epi-wrapper .epi-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.epi-wrapper .epi-btn-primary {
+    background: #135e96;
+    border-color: #135e96;
+    color: #fff;
+}
+
+.epi-wrapper .epi-btn-primary:hover:not(:disabled) {
+    background: #0a4b78;
+    border-color: #0a4b78;
+}
+
+.epi-wrapper .epi-btn-outline {
+    background: #f6f7f7;
+    border-color: #8c8f94;
+    color: #2c3338;
+}
+
+.epi-wrapper .epi-btn-outline:hover:not(:disabled) {
+    background: #f0f0f1;
+    border-color: #2c3338;
+}
+
+.epi-wrapper .epi-btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.epi-wrapper .epi-btn-icon {
+    background: transparent;
+    border: none;
+    color: #646970;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.epi-wrapper .epi-btn-icon:hover {
+    background: #f0f0f1;
+    color: #d63638;
+}
+
+.epi-wrapper .epi-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* ============================================
+   UPLOAD ZONE
+   ============================================ */
+.epi-wrapper .epi-upload-zone {
+    border: 2px dashed #c3c4c7;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    background: #f9f9f9;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.epi-wrapper .epi-upload-zone:hover,
+.epi-wrapper .epi-upload-zone.dragover {
+    border-color: #135e96;
+    background: #f0f6fc;
+}
+
+.epi-wrapper .epi-upload-zone .epi-upload-icon svg {
+    color: #8c8f94;
+    stroke: #8c8f94;
+}
+
+.epi-wrapper .epi-upload-zone h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 12px 0 6px;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-upload-zone p {
+    font-size: 13px;
+    color: #646970;
+    margin: 0 0 8px;
+}
+
+.epi-wrapper .epi-upload-zone .epi-upload-formats {
+    font-size: 11px;
+    color: #8c8f94;
+    background: #f0f0f1;
+    padding: 4px 8px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+/* ============================================
+   FILE INFO
+   ============================================ */
+.epi-wrapper .epi-file-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #f0f6fc;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+.epi-wrapper .epi-file-info .epi-file-icon svg {
+    color: #135e96;
+    stroke: #135e96;
+}
+
+.epi-wrapper .epi-file-info .epi-file-details { flex: 1; }
+
+.epi-wrapper .epi-file-info .epi-file-name {
+    font-weight: 500;
+    color: #1d2327;
+    display: block;
+}
+
+.epi-wrapper .epi-file-info .epi-file-size {
+    font-size: 12px;
+    color: #646970;
+}
+
+/* ============================================
+   PROGRESS
+   ============================================ */
+.epi-wrapper .epi-upload-progress {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.epi-wrapper .epi-progress-bar {
+    height: 8px;
+    background: #dcdcde;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.epi-wrapper .epi-progress-fill {
+    height: 100%;
+    background: #135e96;
+    border-radius: 4px;
+    transition: width 0.3s;
+    width: 0%;
+}
+
+.epi-wrapper .epi-progress-text {
+    font-size: 12px;
+    color: #646970;
+}
+
+
+/* ============================================
+   MAPPING GRID
+   ============================================ */
+.epi-wrapper .epi-mapping-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.epi-wrapper .epi-mapping-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #f9f9f9;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+}
+
+.epi-wrapper .epi-mapping-item label {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-mapping-item select {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    font-size: 12px;
+    background: #fff;
+    color: #1d2327;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+.epi-wrapper .epi-form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.epi-wrapper .epi-form-group { flex: 1; }
+
+.epi-wrapper .epi-form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1d2327;
+    margin-bottom: 6px;
+}
+
+.epi-wrapper .epi-input,
+.epi-wrapper .epi-select,
+.epi-wrapper input[type="text"],
+.epi-wrapper input[type="number"],
+.epi-wrapper input[type="url"],
+.epi-wrapper input[type="email"],
+.epi-wrapper select,
+.epi-wrapper textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    font-size: 13px;
+    background: #fff;
+    color: #1d2327;
+}
+
+.epi-wrapper input:focus,
+.epi-wrapper select:focus,
+.epi-wrapper textarea:focus {
+    border-color: #135e96;
+    outline: none;
+    box-shadow: 0 0 0 1px #135e96;
+}
+
+/* ============================================
+   CHECKBOX
+   ============================================ */
+.epi-wrapper .epi-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #1d2327;
+    margin-bottom: 8px;
+}
+
+.epi-wrapper .epi-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.epi-wrapper .epi-options {
+    padding-top: 16px;
+    border-top: 1px solid #dcdcde;
+}
+
+.epi-wrapper .epi-options h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: #1d2327;
+}
+
+
+/* ============================================
+   TABLES
+   ============================================ */
+.epi-wrapper .epi-preview-stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.epi-wrapper .epi-stat { text-align: center; }
+
+.epi-wrapper .epi-stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #135e96;
+    display: block;
+}
+
+.epi-wrapper .epi-stat-label {
+    font-size: 12px;
+    color: #646970;
+}
+
+.epi-wrapper .epi-preview-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+}
+
+.epi-wrapper .epi-preview-table,
+.epi-wrapper .epi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: #fff;
+}
+
+.epi-wrapper .epi-preview-table th,
+.epi-wrapper .epi-preview-table td,
+.epi-wrapper .epi-table th,
+.epi-wrapper .epi-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #dcdcde;
+    color: #1d2327;
+    background: #fff;
+}
+
+.epi-wrapper .epi-preview-table th,
+.epi-wrapper .epi-table th {
+    background: #f6f7f7;
+    font-weight: 600;
+}
+
+.epi-wrapper .epi-preview-table tr:hover td,
+.epi-wrapper .epi-table tr:hover td {
+    background: #f9f9f9;
+}
+
+/* ============================================
+   PROGRESS CIRCLE
+   ============================================ */
+.epi-wrapper .epi-import-progress {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.epi-wrapper .epi-progress-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 16px;
+    position: relative;
+}
+
+.epi-wrapper .epi-progress-circle svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.epi-wrapper .epi-progress-circle .epi-progress-bg {
+    fill: none;
+    stroke: #dcdcde;
+    stroke-width: 8;
+}
+
+.epi-wrapper .epi-progress-circle .epi-progress-bar {
+    fill: none;
+    stroke: #135e96;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 0.3s;
+}
+
+.epi-wrapper .epi-progress-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-progress-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.epi-wrapper .epi-progress-info span { color: #646970; }
+
+
+/* ============================================
+   IMPORT RESULTS
+   ============================================ */
+.epi-wrapper .epi-import-results {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 20px 0;
+    padding: 16px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.epi-wrapper .epi-result-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.epi-wrapper .epi-result-item span { color: #646970; }
+.epi-wrapper .epi-result-item strong { font-weight: 600; }
+
+.epi-wrapper .epi-result-success svg,
+.epi-wrapper .epi-result-success strong { color: #00a32a; }
+
+.epi-wrapper .epi-result-warning svg,
+.epi-wrapper .epi-result-warning strong { color: #dba617; }
+
+.epi-wrapper .epi-result-error svg,
+.epi-wrapper .epi-result-error strong { color: #d63638; }
+
+/* ============================================
+   IMPORT LOG
+   ============================================ */
+.epi-wrapper .epi-import-log {
+    max-height: 200px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+.epi-wrapper .epi-import-log .log-item {
+    padding: 4px 0;
+    border-bottom: 1px solid #e5e5e5;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-import-log .log-item:last-child { border-bottom: none; }
+.epi-wrapper .epi-import-log .log-success { color: #00a32a; }
+.epi-wrapper .epi-import-log .log-error { color: #d63638; }
+.epi-wrapper .epi-import-log .log-warning { color: #dba617; }
+
+/* ============================================
+   ACTIONS
+   ============================================ */
+.epi-wrapper .epi-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.epi-wrapper .epi-template-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+/* ============================================
+   MODAL
+   ============================================ */
+.epi-wrapper .epi-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+}
+
+.epi-wrapper .epi-modal-content {
+    background: #fff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.epi-wrapper .epi-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.epi-wrapper .epi-modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #646970;
+    padding: 0;
+    line-height: 1;
+}
+
+.epi-wrapper .epi-modal-close:hover { color: #d63638; }
+
+.epi-wrapper .epi-modal-body {
+    padding: 20px;
+}
+
+.epi-wrapper .epi-modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #dcdcde;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #f9f9f9;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.epi-wrapper .epi-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #646970;
+}
+
+.epi-wrapper .epi-empty-state svg {
+    color: #c3c4c7;
+    stroke: #c3c4c7;
+    margin-bottom: 12px;
+}
+
+.epi-wrapper .epi-empty-state p {
+    margin: 0;
+    font-size: 13px;
+    color: #646970;
+}
+
+
+/* ============================================
+   TEMPLATES & SCHEDULES LIST
+   ============================================ */
+.epi-wrapper .epi-templates-list,
+.epi-wrapper .epi-schedules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.epi-wrapper .epi-template-item,
+.epi-wrapper .epi-schedule-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #f9f9f9;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+}
+
+.epi-wrapper .epi-template-item:hover,
+.epi-wrapper .epi-schedule-item:hover {
+    background: #f6f7f7;
+}
+
+.epi-wrapper .epi-template-info,
+.epi-wrapper .epi-schedule-info { flex: 1; }
+
+.epi-wrapper .epi-template-name,
+.epi-wrapper .epi-schedule-name {
+    font-weight: 500;
+    color: #1d2327;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.epi-wrapper .epi-template-meta,
+.epi-wrapper .epi-schedule-meta {
+    font-size: 12px;
+    color: #646970;
+}
+
+/* ============================================
+   HISTORY
+   ============================================ */
+.epi-wrapper .epi-history-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.epi-wrapper .epi-history-stat {
+    text-align: center;
+    flex: 1;
+}
+
+.epi-wrapper .epi-history-stat-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: #135e96;
+    display: block;
+}
+
+.epi-wrapper .epi-history-stat-label {
+    font-size: 11px;
+    color: #646970;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+.epi-wrapper .epi-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.epi-wrapper .epi-pagination button {
+    padding: 6px 12px;
+    border: 1px solid #dcdcde;
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #1d2327;
+}
+
+.epi-wrapper .epi-pagination button:hover {
+    background: #f6f7f7;
+    border-color: #8c8f94;
+}
+
+.epi-wrapper .epi-pagination button.active {
+    background: #135e96;
+    border-color: #135e96;
+    color: #fff;
+}
+
+.epi-wrapper .epi-pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+.epi-wrapper .epi-status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.epi-wrapper .epi-status-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.epi-wrapper .epi-status-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.epi-wrapper .epi-status-error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.epi-wrapper .epi-status-pending {
+    background: #e2e3e5;
+    color: #383d41;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.epi-wrapper .epi-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #dcdcde;
+    font-size: 12px;
+    color: #646970;
+}
+
+.epi-wrapper .epi-footer a {
+    color: #135e96;
+    text-decoration: none;
+}
+
+.epi-wrapper .epi-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 782px) {
+    .epi-wrapper .epi-header { padding: 12px 16px; }
+    .epi-wrapper .epi-tabs { padding: 0 16px; }
+    .epi-wrapper .epi-main { padding: 16px; }
+    .epi-wrapper .epi-form-row { flex-direction: column; }
+    .epi-wrapper .epi-mapping-grid { grid-template-columns: 1fr; }
+    .epi-wrapper .epi-steps { flex-wrap: wrap; }
+    .epi-wrapper .epi-step-line { display: none; }
+    .epi-wrapper .epi-import-results { flex-direction: column; gap: 12px; }
+}
+
+/* ============================================
+   DROPDOWN MENU
+   ============================================ */
+.epi-wrapper .epi-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.epi-wrapper .epi-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.epi-wrapper .epi-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 9999;
+    min-width: 300px;
+    padding: 8px 0;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.epi-wrapper .epi-dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.epi-wrapper .epi-dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: #1d2327;
+    text-decoration: none;
+    border-bottom: 1px solid #f0f0f1;
+    transition: background 0.15s;
+}
+
+.epi-wrapper .epi-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.epi-wrapper .epi-dropdown-item:hover {
+    background: #f6f7f7;
+    color: #135e96;
+}
+
+.epi-wrapper .epi-dropdown-item strong {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.epi-wrapper .epi-dropdown-item small {
+    display: block;
+    font-size: 11px;
+    color: #646970;
+    line-height: 1.4;
+}
+
+.epi-wrapper .epi-dropdown-item:hover small {
+    color: #50575e;
+}

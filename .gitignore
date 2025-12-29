@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test files
+templates/wc-product-export-*.csv
+
+# Vendor (if using composer)
+vendor/
+
+# Logs
+*.log

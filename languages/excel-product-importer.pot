@@ -1,0 +1,173 @@
+# Copyright (C) 2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
+# This file is distributed under the same license as the Excel Product Importer plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Excel Product Importer 1.0.0\n"
+"Report-Msgid-Bugs-To: https://www.adnbilisim.com.tr\n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: excel-product-importer.php
+msgid "Excel Product Importer için WooCommerce eklentisinin yüklü ve aktif olması gerekmektedir."
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Excel Ürün İçe Aktarıcı"
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Excel İçe Aktar"
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Yükleniyor..."
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "İşleniyor..."
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Başarılı!"
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Hata oluştu!"
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "İçe aktarma işlemini başlatmak istiyor musunuz?"
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Lütfen bir dosya seçin"
+msgstr ""
+
+#: includes/class-epi-admin.php
+msgid "Geçersiz dosya formatı. Lütfen .xlsx, .xls veya .csv dosyası seçin."
+msgstr ""
+
+#: templates/admin-page.php
+msgid "WooCommerce için Toplu Ürün Yükleme"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Şablon İndir"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Dosya Yükle"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Sütun Eşleştir"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Önizleme"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "İçe Aktar"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Excel Dosyasını Sürükle & Bırak"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "veya dosya seçmek için tıklayın"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Desteklenen formatlar: .xlsx, .xls, .csv"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Devam Et"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Sütun Eşleştirme"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Excel sütunlarını WooCommerce alanlarıyla eşleştirin."
+msgstr ""
+
+#: templates/admin-page.php
+msgid "İçe Aktarma Seçenekleri"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Mevcut ürünleri atla (SKU bazlı)"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Mevcut ürünleri güncelle"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Dosya varyasyonlu ürünler içeriyor"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Geri"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Veri Önizleme"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "İçe aktarılacak verilerin önizlemesi (ilk 5 satır)"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Toplam Satır"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Eşleşen Sütun"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "İçe Aktarmayı Başlat"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "İçe Aktarma İşlemi"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Hazırlanıyor..."
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Başarılı:"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Atlanan:"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Hata:"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Yeni İçe Aktarma"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Ürünleri Görüntüle"
+msgstr ""
+
+#: templates/admin-page.php
+msgid "Geliştirici:"
+msgstr ""

@@ -1,0 +1,41 @@
+product_name;sku;description;short_description;regular_price;sale_price;stock_quantity;category;tags;image_url;gallery_urls;weight;length;width;height;product_type;parent_sku;attribute_1_name;attribute_1_values;attribute_2_name;attribute_2_values
+# ===== BASİT ÜRÜN ÖRNEKLERİ =====
+Deri Cüzdan;WALLET-001;Hakiki deri erkek cüzdanı. El yapımı.;Premium deri cüzdan;299.90;;30;Aksesuar;cüzdan,deri,erkek;https://example.com/images/wallet.jpg;;0.1;12;10;2;simple;;;;;
+Slim Fit Pantolon;PANT-001;Modern kesim slim fit pantolon. Şık ve rahat.;Slim fit erkek pantolon;199.90;149.90;50;Giyim;pantolon,slim,erkek;https://example.com/images/pant-main.jpg;;0.4;100;35;3;simple;;;;;
+# ===== VARYASYONLU ÜRÜN ÖRNEĞİ 1: T-SHIRT (Renk + Beden) =====
+# Ana ürün (variable) - Tüm varyasyon seçeneklerini | ile ayırın
+Basic T-Shirt;TSHIRT-001;Yüksek kaliteli pamuklu basic t-shirt. Günlük kullanım için ideal.;Rahat ve şık basic t-shirt;99.90;79.90;100;Giyim;tshirt,pamuk,basic;https://example.com/images/tshirt-main.jpg;https://example.com/images/tshirt-2.jpg,https://example.com/images/tshirt-3.jpg;0.2;30;25;2;variable;;Renk;Kırmızı|Mavi|Siyah|Beyaz;Beden;S|M|L|XL
+# Varyasyonlar - Her biri kendi SKU, stok, fiyat ve indirimli fiyatına sahip
+Basic T-Shirt - Kırmızı S;TSHIRT-001-RED-S;;;99.90;79.90;25;;;;;;;;;variation;TSHIRT-001;Renk;Kırmızı;Beden;S
+Basic T-Shirt - Kırmızı M;TSHIRT-001-RED-M;;;109.90;89.90;30;;;;;;;;;variation;TSHIRT-001;Renk;Kırmızı;Beden;M
+Basic T-Shirt - Kırmızı L;TSHIRT-001-RED-L;;;119.90;99.90;20;;;;;;;;;variation;TSHIRT-001;Renk;Kırmızı;Beden;L
+Basic T-Shirt - Kırmızı XL;TSHIRT-001-RED-XL;;;129.90;109.90;15;;;;;;;;;variation;TSHIRT-001;Renk;Kırmızı;Beden;XL
+Basic T-Shirt - Mavi S;TSHIRT-001-BLUE-S;;;99.90;79.90;18;;;;;;;;;variation;TSHIRT-001;Renk;Mavi;Beden;S
+Basic T-Shirt - Mavi M;TSHIRT-001-BLUE-M;;;109.90;89.90;22;;;;;;;;;variation;TSHIRT-001;Renk;Mavi;Beden;M
+Basic T-Shirt - Mavi L;TSHIRT-001-BLUE-L;;;119.90;99.90;12;;;;;;;;;variation;TSHIRT-001;Renk;Mavi;Beden;L
+Basic T-Shirt - Siyah S;TSHIRT-001-BLK-S;;;99.90;79.90;35;;;;;;;;;variation;TSHIRT-001;Renk;Siyah;Beden;S
+Basic T-Shirt - Siyah M;TSHIRT-001-BLK-M;;;109.90;89.90;40;;;;;;;;;variation;TSHIRT-001;Renk;Siyah;Beden;M
+Basic T-Shirt - Beyaz M;TSHIRT-001-WHT-M;;;109.90;;28;;;;;;;;;variation;TSHIRT-001;Renk;Beyaz;Beden;M
+# ===== VARYASYONLU ÜRÜN ÖRNEĞİ 2: AYAKKABI (Renk + Numara) =====
+Spor Ayakkabı;SHOE-001;Hafif ve rahat spor ayakkabı.;Günlük spor ayakkabı;449.90;399.90;80;Ayakkabı;spor,ayakkabı,rahat;https://example.com/images/shoe-main.jpg;;0.5;30;12;10;variable;;Renk;Siyah|Beyaz|Gri;Numara;38|39|40|41|42|43|44
+Spor Ayakkabı - Siyah 40;SHOE-001-BLK-40;;;449.90;399.90;10;;;;;;;;;variation;SHOE-001;Renk;Siyah;Numara;40
+Spor Ayakkabı - Siyah 41;SHOE-001-BLK-41;;;449.90;399.90;15;;;;;;;;;variation;SHOE-001;Renk;Siyah;Numara;41
+Spor Ayakkabı - Siyah 42;SHOE-001-BLK-42;;;449.90;399.90;20;;;;;;;;;variation;SHOE-001;Renk;Siyah;Numara;42
+Spor Ayakkabı - Siyah 43;SHOE-001-BLK-43;;;449.90;399.90;12;;;;;;;;;variation;SHOE-001;Renk;Siyah;Numara;43
+Spor Ayakkabı - Beyaz 40;SHOE-001-WHT-40;;;469.90;419.90;8;;;;;;;;;variation;SHOE-001;Renk;Beyaz;Numara;40
+Spor Ayakkabı - Beyaz 42;SHOE-001-WHT-42;;;469.90;419.90;18;;;;;;;;;variation;SHOE-001;Renk;Beyaz;Numara;42
+Spor Ayakkabı - Gri 41;SHOE-001-GRY-41;;;459.90;409.90;14;;;;;;;;;variation;SHOE-001;Renk;Gri;Numara;41
+Spor Ayakkabı - Gri 42;SHOE-001-GRY-42;;;459.90;409.90;16;;;;;;;;;variation;SHOE-001;Renk;Gri;Numara;42
+# ===== VARYASYONLU ÜRÜN ÖRNEĞİ 3: BEBEK TULUMU (Tek Özellik - Beden) =====
+Bebek Uyku Tulumu;BABY-SLEEP-001;Organik pamuklu bebek uyku tulumu. 0-24 ay için uygundur.;Organik pamuk uyku tulumu;349.90;299.90;60;Bebek;bebek,uyku tulumu,organik;https://example.com/images/baby-sleep.jpg;;0.3;60;40;5;variable;;Beden;0-6 Ay|6-12 Ay|12-18 Ay|18-24 Ay;;
+Bebek Uyku Tulumu - 0-6 Ay;BABY-SLEEP-001-0-6;;;349.90;299.90;20;;;;;;;;;variation;BABY-SLEEP-001;Beden;0-6 Ay;;
+Bebek Uyku Tulumu - 6-12 Ay;BABY-SLEEP-001-6-12;;;349.90;299.90;18;;;;;;;;;variation;BABY-SLEEP-001;Beden;6-12 Ay;;
+Bebek Uyku Tulumu - 12-18 Ay;BABY-SLEEP-001-12-18;;;369.90;319.90;12;;;;;;;;;variation;BABY-SLEEP-001;Beden;12-18 Ay;;
+Bebek Uyku Tulumu - 18-24 Ay;BABY-SLEEP-001-18-24;;;389.90;339.90;10;;;;;;;;;variation;BABY-SLEEP-001;Beden;18-24 Ay;;
+# ===== VARYASYONLU ÜRÜN ÖRNEĞİ 4: İNDİRİMSİZ VARYASYONLAR =====
+Hastane Çıkışı Seti;HOSPITAL-001;10 parça hastane çıkışı seti. Premium kalite.;Hastane çıkışı bebek seti;599.90;;45;Bebek;hastane çıkışı,set,bebek;https://example.com/images/hospital-set.jpg;;0.8;40;30;10;variable;;Renk;Pembe|Mavi|Krem;Beden;50|56|62
+Hastane Çıkışı - Pembe 50;HOSPITAL-001-PNK-50;;;599.90;;15;;;;;;;;;variation;HOSPITAL-001;Renk;Pembe;Beden;50
+Hastane Çıkışı - Pembe 56;HOSPITAL-001-PNK-56;;;599.90;;12;;;;;;;;;variation;HOSPITAL-001;Renk;Pembe;Beden;56
+Hastane Çıkışı - Mavi 50;HOSPITAL-001-BLU-50;;;599.90;;10;;;;;;;;;variation;HOSPITAL-001;Renk;Mavi;Beden;50
+Hastane Çıkışı - Mavi 56;HOSPITAL-001-BLU-56;;;599.90;;8;;;;;;;;;variation;HOSPITAL-001;Renk;Mavi;Beden;56
+Hastane Çıkışı - Krem 50;HOSPITAL-001-CRM-50;;;579.90;;5;;;;;;;;;variation;HOSPITAL-001;Renk;Krem;Beden;50
