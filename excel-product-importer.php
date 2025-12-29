@@ -1,6 +1,13 @@
 <?php
 /**
  * Plugin Name: Excel Product Importer for WooCommerce
+ * 
+ * @package     Excel_Product_Importer
+ * @author      ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @copyright   2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @license     GPL-2.0-or-later
+ * 
+ * @wordpress-plugin
  * Plugin URI: https://www.adnbilisim.com.tr
  * Description: Excel dosyalarından WooCommerce'e toplu ürün yükleme eklentisi. Varyasyonlu ürün desteği ile.
  * Version: 1.0.0

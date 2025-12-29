@@ -1,5 +1,10 @@
 # Excel Product Importer for WooCommerce
 
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
+[![Copyright](https://img.shields.io/badge/Copyright-ADN%20Bilişim-blue.svg)](https://www.adnbilisim.com.tr)
+
+> ⚠️ **UYARI / WARNING**: Bu yazılım telif hakkı ile korunmaktadır. Kopyalamak, satmak veya kendi ürününüz gibi sunmak yasaktır. / This software is copyrighted. Copying, selling, or presenting as your own product is prohibited.
+
 Excel dosyalarından WooCommerce'e toplu ürün yükleme eklentisi. Varyasyonlu ürün desteği ile.
 
 ![WordPress](https://img.shields.io/badge/WordPress-5.8+-blue.svg)
@@ -68,10 +73,20 @@ Eklenti 4 farklı şablon formatı sunar:
 - WooCommerce 6.0+
 - PHP 7.4+
 
+## Lisans
+
+**© 2024 ADN Bilişim Teknolojileri LTD. ŞTİ. - Tüm Hakları Saklıdır**
+
+Bu yazılım ücretsiz kullanılabilir ancak:
+- ❌ Satılamaz veya ücretli dağıtılamaz
+- ❌ Kendi ürününüz gibi sunulamaz
+- ❌ Copyright bilgileri kaldırılamaz
+- ❌ Başka marketlerde yayınlanamaz
+
+Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+
 ## Geliştirici
 
 [ADN Bilişim Teknolojileri LTD. ŞTİ.](https://www.adnbilisim.com.tr)
 
-## Lisans
-
-GPLv2 or later
+📧 İletişim: info@adnbilisim.com.tr

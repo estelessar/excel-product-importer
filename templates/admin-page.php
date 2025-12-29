@@ -1,6 +1,12 @@
 <?php
 /**
  * Admin page template
+ * 
+ * @package     Excel_Product_Importer
+ * @author      ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @copyright   2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @license     Proprietary - See LICENSE file
+ * @link        https://www.adnbilisim.com.tr
  */
 
 if (!defined('ABSPATH')) {
@@ -553,7 +559,8 @@ $active_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'import'
 
     <!-- Footer -->
     <footer class="epi-footer">
-        <p><?php _e('Geliştirici:', 'excel-product-importer'); ?> <a href="https://www.adnbilisim.com.tr" target="_blank">ADN Bilişim Teknolojileri LTD. ŞTİ.</a></p>
+        <p><strong>© <?php echo date('Y'); ?> ADN Bilişim Teknolojileri LTD. ŞTİ.</strong> - Tüm Hakları Saklıdır</p>
+        <p><a href="https://www.adnbilisim.com.tr" target="_blank">www.adnbilisim.com.tr</a> | Bu yazılımın izinsiz kopyalanması ve dağıtılması yasaktır.</p>
         <p class="epi-version">v<?php echo EPI_VERSION; ?></p>
     </footer>
 

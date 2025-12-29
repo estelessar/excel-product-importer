@@ -1,6 +1,13 @@
 /**
  * Excel Product Importer - Admin Script
- * ADN Bilişim Teknolojileri
+ * 
+ * @package     Excel_Product_Importer
+ * @author      ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @copyright   2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @license     Proprietary - See LICENSE file
+ * @link        https://www.adnbilisim.com.tr
+ * 
+ * NOTICE: Bu dosyanın izinsiz kopyalanması, dağıtılması veya satılması yasaktır.
  */
 
 (function($) {

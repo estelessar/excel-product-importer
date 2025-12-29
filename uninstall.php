@@ -2,7 +2,11 @@
 /**
  * Uninstall Excel Product Importer
  * 
- * @package Excel_Product_Importer
+ * @package     Excel_Product_Importer
+ * @author      ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @copyright   2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
+ * @license     Proprietary - See LICENSE file
+ * @link        https://www.adnbilisim.com.tr
  */
 
 // If uninstall not called from WordPress, exit

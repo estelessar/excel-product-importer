@@ -1,28 +1,67 @@
-GNU GENERAL PUBLIC LICENSE
-Version 2, June 1991
-
-Copyright (C) 2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
+Copyright (c) 2024 ADN Bilişim Teknolojileri LTD. ŞTİ.
 https://www.adnbilisim.com.tr
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+================================================================================
+                        KULLANIM KOŞULLARI / TERMS OF USE
+================================================================================
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+TÜRKİYE'DE GEÇERLİ YASAL UYARI:
+Bu yazılım 5846 sayılı Fikir ve Sanat Eserleri Kanunu kapsamında korunmaktadır.
+Yazılımın izinsiz kopyalanması, dağıtılması, satılması veya kaynak kodunun
+değiştirilerek başka bir ürün olarak sunulması yasaktır ve hukuki işlem başlatılır.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ENGLISH LEGAL NOTICE:
+This software is protected under international copyright laws.
+Unauthorized copying, distribution, selling, or presenting modified versions
+as your own product is strictly prohibited and will result in legal action.
 
----
+================================================================================
+                              İZİN VERİLENLER / PERMITTED
+================================================================================
 
-IMPORTANT NOTICE:
-This software is proprietary work of ADN Bilişim Teknolojileri LTD. ŞTİ.
-While distributed under GPL, unauthorized commercial redistribution,
-reselling, or claiming ownership is prohibited and may result in legal action.
+✅ Kişisel ve ticari web sitelerinizde kullanabilirsiniz
+✅ You may use it on your personal and commercial websites
 
-For commercial licensing inquiries: info@adnbilisim.com.tr
+✅ Kendi ihtiyaçlarınız için değiştirebilirsiniz
+✅ You may modify it for your own needs
+
+✅ Müşterilerinizin sitelerine kurabilirsiniz (web ajansları için)
+✅ You may install it on your clients' websites (for web agencies)
+
+================================================================================
+                            YASAKLANANLAR / PROHIBITED
+================================================================================
+
+❌ Yazılımı satmak veya ücretli dağıtmak
+❌ Selling or distributing the software for a fee
+
+❌ Kaynak kodunu değiştirip kendi ürününüz gibi sunmak
+❌ Modifying source code and presenting it as your own product
+
+❌ Copyright ve yazar bilgilerini kaldırmak veya değiştirmek
+❌ Removing or modifying copyright and author information
+
+❌ Başka bir isim veya marka altında yayınlamak
+❌ Publishing under a different name or brand
+
+❌ WordPress.org veya başka marketlerde kendi ürününüz olarak yayınlamak
+❌ Publishing on WordPress.org or other marketplaces as your own product
+
+================================================================================
+                                    GARANTİ
+================================================================================
+
+Bu yazılım "OLDUĞU GİBİ" sağlanmaktadır. Yazar, yazılımın kullanımından
+doğabilecek herhangi bir zarardan sorumlu tutulamaz.
+
+This software is provided "AS IS". The author cannot be held responsible
+for any damages arising from the use of this software.
+
+================================================================================
+
+İhlal durumunda / In case of violation:
+📧 legal@adnbilisim.com.tr
+🌐 https://www.adnbilisim.com.tr
+
+Ticari lisans için / For commercial licensing:
+📧 info@adnbilisim.com.tr
