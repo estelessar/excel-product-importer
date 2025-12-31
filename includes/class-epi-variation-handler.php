@@ -53,11 +53,20 @@ class EPI_Variation_Handler {
         // Stock management
         if (isset($data['stock_quantity']) && $data['stock_quantity'] !== '') {
             $variation->set_manage_stock(true);
-            $variation->set_stock_quantity(intval($data['stock_quantity']));
+            $stock_qty = intval($data['stock_quantity']);
+            $variation->set_stock_quantity($stock_qty);
+            
+            // Otomatik stok durumu ayarla
+            if ($stock_qty <= 0) {
+                $variation->set_stock_status('outofstock');
+            } else {
+                $variation->set_stock_status('instock');
+            }
         }
         
+        // Manuel stok durumu (varsa üzerine yazar)
         if (isset($data['in_stock'])) {
-            $stock_status = ($data['in_stock'] == '1' || $data['in_stock'] === 'instock') ? 'instock' : 'outofstock';
+            $stock_status = ($data['in_stock'] == '1' || strtolower($data['in_stock']) === 'instock') ? 'instock' : 'outofstock';
             $variation->set_stock_status($stock_status);
         }
         

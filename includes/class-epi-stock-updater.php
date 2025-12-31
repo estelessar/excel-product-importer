@@ -63,8 +63,17 @@ class EPI_Stock_Updater {
         $stock = $this->get_mapped_value($row, $mapping, 'stock_quantity');
         if ($stock !== null && $stock !== '') {
             $old_stock = $product->get_stock_quantity();
+            $stock_qty = intval($stock);
             $product->set_manage_stock(true);
-            $product->set_stock_quantity(intval($stock));
+            $product->set_stock_quantity($stock_qty);
+            
+            // Otomatik stok durumu ayarla
+            if ($stock_qty <= 0) {
+                $product->set_stock_status('outofstock');
+            } else {
+                $product->set_stock_status('instock');
+            }
+            
             $updated['stock'] = array('old' => $old_stock, 'new' => $stock);
         }
         
