@@ -23,6 +23,10 @@ class EPI_Ajax_Handler {
         add_action('wp_ajax_epi_get_categories', array($this, 'get_categories'));
         add_action('wp_ajax_epi_download_template', array($this, 'download_template'));
         
+        // Background Import
+        add_action('wp_ajax_epi_start_background_import', array($this, 'start_background_import'));
+        add_action('wp_ajax_epi_check_background_progress', array($this, 'check_background_progress'));
+        
         // Export
         add_action('wp_ajax_epi_export_products', array($this, 'export_products'));
         
@@ -45,6 +49,9 @@ class EPI_Ajax_Handler {
         add_action('wp_ajax_epi_delete_schedule', array($this, 'delete_schedule'));
         add_action('wp_ajax_epi_toggle_schedule', array($this, 'toggle_schedule'));
         add_action('wp_ajax_epi_run_schedule', array($this, 'run_schedule'));
+        
+        // Background cron hook
+        add_action('epi_background_import', array($this, 'process_background_import'), 10, 1);
     }
     
     /**
@@ -781,5 +788,232 @@ class EPI_Ajax_Handler {
         $scheduler->run_now($id);
         
         wp_send_json_success(array('message' => __('Zamanlama çalıştırıldı.', 'excel-product-importer')));
+    }
+    
+    /**
+     * Start background import
+     */
+    public function start_background_import() {
+        $this->verify_nonce();
+        
+        $mapping = isset($_POST['mapping']) ? json_decode(stripslashes($_POST['mapping']), true) : array();
+        $options = isset($_POST['options']) ? json_decode(stripslashes($_POST['options']), true) : array();
+        $batch = isset($_POST['batch']) ? intval($_POST['batch']) : 0;
+        
+        $filepath = get_transient('epi_current_file_' . get_current_user_id());
+        
+        if (!$filepath || !file_exists($filepath)) {
+            wp_send_json_error(array('message' => __('Dosya bulunamadı.', 'excel-product-importer')));
+        }
+        
+        $parser = new EPI_Excel_Parser();
+        $data = $parser->parse($filepath);
+        
+        if (is_wp_error($data)) {
+            wp_send_json_error(array('message' => $data->get_error_message()));
+        }
+        
+        $import_id = 'epi_bg_' . get_current_user_id() . '_' . time();
+        
+        // Save import state
+        $state = array(
+            'import_id' => $import_id,
+            'user_id' => get_current_user_id(),
+            'filepath' => $filepath,
+            'mapping' => $mapping,
+            'options' => $options,
+            'current_batch' => $batch,
+            'total_rows' => count($data['rows']),
+            'batch_size' => 10,
+            'status' => 'running',
+            'success' => 0,
+            'errors' => 0,
+            'skipped' => 0,
+            'product_ids' => array(),
+            'started_at' => current_time('mysql'),
+            'last_update' => current_time('mysql')
+        );
+        
+        // Get existing results if any
+        $existing = get_transient('epi_import_results_' . get_current_user_id());
+        if ($existing) {
+            $state['success'] = $existing['success'];
+            $state['errors'] = $existing['errors'];
+            $state['skipped'] = $existing['skipped'];
+            $state['product_ids'] = $existing['product_ids'];
+        }
+        
+        set_transient('epi_background_import_' . get_current_user_id(), $state, 6 * HOUR_IN_SECONDS);
+        
+        // Schedule immediate cron event
+        wp_schedule_single_event(time(), 'epi_background_import', array($import_id));
+        
+        // Also try to run it now via spawn
+        spawn_cron();
+        
+        wp_send_json_success(array(
+            'import_id' => $import_id,
+            'message' => __('Arka plan işlemi başlatıldı.', 'excel-product-importer')
+        ));
+    }
+    
+    /**
+     * Check background import progress
+     */
+    public function check_background_progress() {
+        $this->verify_nonce();
+        
+        $state = get_transient('epi_background_import_' . get_current_user_id());
+        
+        if (!$state) {
+            wp_send_json_success(array(
+                'status' => 'not_found',
+                'message' => __('Aktif arka plan işlemi bulunamadı.', 'excel-product-importer')
+            ));
+        }
+        
+        $processed = $state['current_batch'] * $state['batch_size'];
+        $processed = min($processed, $state['total_rows']);
+        $progress = $state['total_rows'] > 0 ? round(($processed / $state['total_rows']) * 100) : 0;
+        
+        wp_send_json_success(array(
+            'status' => $state['status'],
+            'processed' => $processed,
+            'total' => $state['total_rows'],
+            'progress' => $progress,
+            'success' => $state['success'],
+            'errors' => $state['errors'],
+            'skipped' => $state['skipped'],
+            'last_update' => $state['last_update']
+        ));
+    }
+    
+    /**
+     * Process background import (cron callback)
+     */
+    public function process_background_import($import_id) {
+        // Find the state by import_id
+        $user_id = null;
+        
+        // Extract user_id from import_id (format: epi_bg_{user_id}_{timestamp})
+        if (preg_match('/epi_bg_(\d+)_/', $import_id, $matches)) {
+            $user_id = intval($matches[1]);
+        }
+        
+        if (!$user_id) {
+            error_log('EPI Background Import: Invalid import_id ' . $import_id);
+            return;
+        }
+        
+        $state = get_transient('epi_background_import_' . $user_id);
+        
+        if (!$state || $state['import_id'] !== $import_id) {
+            error_log('EPI Background Import: State not found for ' . $import_id);
+            return;
+        }
+        
+        if ($state['status'] !== 'running') {
+            return;
+        }
+        
+        $filepath = $state['filepath'];
+        
+        if (!file_exists($filepath)) {
+            $state['status'] = 'error';
+            $state['error_message'] = 'Dosya bulunamadı';
+            set_transient('epi_background_import_' . $user_id, $state, 6 * HOUR_IN_SECONDS);
+            return;
+        }
+        
+        $parser = new EPI_Excel_Parser();
+        $data = $parser->parse($filepath);
+        
+        if (is_wp_error($data)) {
+            $state['status'] = 'error';
+            $state['error_message'] = $data->get_error_message();
+            set_transient('epi_background_import_' . $user_id, $state, 6 * HOUR_IN_SECONDS);
+            return;
+        }
+        
+        $creator = new EPI_Product_Creator();
+        $batch_size = $state['batch_size'];
+        $start = $state['current_batch'] * $batch_size;
+        $rows = array_slice($data['rows'], $start, $batch_size);
+        
+        if (empty($rows)) {
+            // Import complete
+            $state['status'] = 'completed';
+            $state['last_update'] = current_time('mysql');
+            set_transient('epi_background_import_' . $user_id, $state, 6 * HOUR_IN_SECONDS);
+            
+            // Log to history
+            $history = new EPI_History();
+            $history->log_import(array(
+                'filename' => basename($filepath),
+                'file_size' => filesize($filepath),
+                'total_rows' => $state['total_rows'],
+                'success_count' => $state['success'],
+                'error_count' => $state['errors'],
+                'skipped_count' => $state['skipped'],
+                'product_ids' => $state['product_ids'],
+                'mapping' => $state['mapping'],
+                'options' => $state['options'],
+                'status' => 'completed',
+                'error_log' => array()
+            ));
+            
+            return;
+        }
+        
+        foreach ($rows as $row) {
+            $result = $creator->create_product($row, $state['mapping'], $state['options']);
+            
+            if (is_wp_error($result)) {
+                $state['errors']++;
+            } elseif ($result === 'skipped') {
+                $state['skipped']++;
+            } else {
+                $state['success']++;
+                if (is_array($result) && isset($result['id'])) {
+                    $state['product_ids'][] = $result['id'];
+                }
+            }
+        }
+        
+        $state['current_batch']++;
+        $state['last_update'] = current_time('mysql');
+        
+        $processed = $state['current_batch'] * $batch_size;
+        $has_more = $processed < $state['total_rows'];
+        
+        if ($has_more) {
+            // Schedule next batch
+            set_transient('epi_background_import_' . $user_id, $state, 6 * HOUR_IN_SECONDS);
+            wp_schedule_single_event(time() + 1, 'epi_background_import', array($import_id));
+            spawn_cron();
+        } else {
+            // Complete
+            $state['status'] = 'completed';
+            set_transient('epi_background_import_' . $user_id, $state, 6 * HOUR_IN_SECONDS);
+            
+            // Log to history
+            $history = new EPI_History();
+            $history->log_import(array(
+                'filename' => basename($filepath),
+                'file_size' => filesize($filepath),
+                'total_rows' => $state['total_rows'],
+                'success_count' => $state['success'],
+                'error_count' => $state['errors'],
+                'skipped_count' => $state['skipped'],
+                'product_ids' => $state['product_ids'],
+                'mapping' => $state['mapping'],
+                'options' => $state['options'],
+                'status' => 'completed',
+                'error_log' => array()
+            ));
+            
+            // Clean up
+            delete_transient('epi_import_results_' . $user_id);
+        }
     }
 }

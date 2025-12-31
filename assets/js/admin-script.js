@@ -50,6 +50,14 @@
             $(document).on('click', '#epi-start-import', function() { self.startImport(); });
             $(document).on('click', '#epi-new-import', function() { self.resetImport(); });
             
+            // Resume import
+            $(document).on('click', '#epi-resume-import', function() {
+                var batch = $(this).data('batch');
+                $(this).remove();
+                $('#epi-import-actions').hide();
+                self.runImport(batch, 0);
+            });
+            
             // Download template dropdown
             $(document).on('click', '#epi-template-dropdown-btn', function(e) {
                 e.preventDefault();
@@ -372,24 +380,116 @@
             this.runImport(0);
         },
 
-        runImport: function(batch) {
+        runImport: function(batch, retryCount) {
+            var self = this;
+            retryCount = retryCount || 0;
+            var maxRetries = 3;
+            
+            $.ajax({
+                url: epiData.ajaxUrl,
+                type: 'POST',
+                timeout: 120000, // 2 dakika timeout
+                data: {
+                    action: 'epi_import_products',
+                    nonce: epiData.nonce,
+                    mapping: JSON.stringify(this.mapping),
+                    options: JSON.stringify(this.options),
+                    batch: batch
+                },
+                success: function(response) {
+                    if (response.success) {
+                        var data = response.data;
+                        self.updateProgress(data.progress, data.processed, data.total);
+                        self.updateCounts(data.results);
+                        self.addLogMessages(data.results.messages);
+                        if (data.has_more) {
+                            setTimeout(function() { self.runImport(data.next_batch, 0); }, 200);
+                        } else {
+                            self.importComplete();
+                        }
+                    } else {
+                        self.handleImportError(batch, retryCount, maxRetries, response.data ? response.data.message : 'Bilinmeyen hata');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    self.handleImportError(batch, retryCount, maxRetries, 'Bağlantı hatası: ' + (status === 'timeout' ? 'Zaman aşımı' : error));
+                }
+            });
+        },
+        
+        handleImportError: function(batch, retryCount, maxRetries, errorMsg) {
+            var self = this;
+            if (retryCount < maxRetries) {
+                // Retry with delay
+                var delay = (retryCount + 1) * 2000; // 2s, 4s, 6s
+                self.addLogMessages([{
+                    type: 'warning',
+                    row: '-',
+                    message: 'Bağlantı sorunu, ' + (retryCount + 1) + '. deneme... (' + (delay/1000) + 's bekleniyor)'
+                }]);
+                setTimeout(function() { 
+                    self.runImport(batch, retryCount + 1); 
+                }, delay);
+            } else {
+                // Max retries reached, offer to continue in background
+                self.addLogMessages([{
+                    type: 'error',
+                    row: '-',
+                    message: errorMsg + ' - Maksimum deneme sayısına ulaşıldı.'
+                }]);
+                
+                if (confirm('İçe aktarma takıldı. Arka planda devam etmek ister misiniz?\n\nEvet: İşlem arka planda devam eder, sayfayı kapatabilirsiniz.\nHayır: Kaldığı yerden tekrar deneyin.')) {
+                    self.startBackgroundImport(batch);
+                } else {
+                    $('#epi-progress-status').text('Duraklatıldı - Batch ' + batch);
+                    $('#epi-import-actions').show();
+                    // Add resume button
+                    if (!$('#epi-resume-import').length) {
+                        $('#epi-import-actions').prepend('<button type="button" class="epi-btn epi-btn-primary" id="epi-resume-import" data-batch="' + batch + '">Devam Et</button> ');
+                    }
+                }
+            }
+        },
+        
+        startBackgroundImport: function(batch) {
             var self = this;
             $.post(epiData.ajaxUrl, {
-                action: 'epi_import_products',
+                action: 'epi_start_background_import',
                 nonce: epiData.nonce,
                 mapping: JSON.stringify(this.mapping),
                 options: JSON.stringify(this.options),
                 batch: batch
             }, function(response) {
                 if (response.success) {
+                    self.addLogMessages([{
+                        type: 'success',
+                        row: '-',
+                        message: 'Arka plan işlemi başlatıldı. Sayfayı kapatabilirsiniz.'
+                    }]);
+                    $('#epi-progress-status').text('Arka planda devam ediyor...');
+                    self.checkBackgroundProgress();
+                } else {
+                    alert('Arka plan işlemi başlatılamadı: ' + response.data.message);
+                }
+            });
+        },
+        
+        checkBackgroundProgress: function() {
+            var self = this;
+            $.post(epiData.ajaxUrl, {
+                action: 'epi_check_background_progress',
+                nonce: epiData.nonce
+            }, function(response) {
+                if (response.success && response.data) {
                     var data = response.data;
                     self.updateProgress(data.progress, data.processed, data.total);
-                    self.updateCounts(data.results);
-                    self.addLogMessages(data.results.messages);
-                    if (data.has_more) {
-                        setTimeout(function() { self.runImport(data.next_batch); }, 100);
-                    } else {
+                    $('#epi-success-count').text(data.success);
+                    $('#epi-error-count').text(data.errors);
+                    
+                    if (data.status === 'completed') {
                         self.importComplete();
+                    } else if (data.status === 'running') {
+                        setTimeout(function() { self.checkBackgroundProgress(); }, 3000);
                     }
                 }
             });
